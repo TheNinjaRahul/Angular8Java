@@ -1,0 +1,20 @@
+
+<app-header></app-header>
+<div class="text-success text-capitalize" *ngIf="isSuccess">
+    <h3>profile updated</h3>
+</div>
+<div class="text-danger text-capitalize" *ngIf="isError">
+    <h3>Error Accured: {{errorMessage}}</h3>    
+</div>
+<div class="card" style="width:400px">
+    <img class="card-img-top img-thumbnail" src="{{currentProfile.imagePath}} " alt="Card image">
+    <div class="card-body">
+      <h4 class="card-title">{{currentProfile.name}}</h4>
+      <p *ngIf="!isEditOn" class="card-text">{{currentProfile.desc}}</p>
+      <div *ngIf="isEditOn">
+        <input type="text" [(ngModel)]="this.currentProfile.desc" >
+      </div>
+      <a class="btn btn-primary" (click)="editClick()" *ngIf="!isEditOn">Edit Profile</a>
+      <a class="btn btn-primary" (click)="submitDesc()" *ngIf="isEditOn">Submit</a>
+    </div>
+</div>

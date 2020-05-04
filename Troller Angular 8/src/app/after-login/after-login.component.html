@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="spinner-border text-success text-center" *ngIf="isLoading"></div>
+<div *ngIf="noDataAvailable">
+  <h1>No data available...</h1>
+</div>
+<div *ngIf="isError" class="text-danger">
+  <h4>Error accured: {{errorMessage}}</h4>
+</div>
+<div class="row container-fluid">
+  <div class="col-md-4" *ngFor="let item of profiles">
+    <div class="card">
+      <img class="card-img-top " src="{{item.imagePath}} " alt="Card image">
+      <div class="card-body text-center">
+        <h4 class="card-title">{{item.name}}</h4>
+        <p class="card-text">{{item.desc}}</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#' + item.name">
+          See Profile
+        </button>
+
+        <button type="button" class="btn btn-primary" (click)="deleteProfile(item.id)">
+          Delete Profile
+        </button>
+        
+      </div>
+
+      <!-- model parth -->
+      <!-- Button to Open the Modal -->
+      
+
+      <!-- The Modal -->
+      <div class="modal" [id]="item.name">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              Modal body..
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>

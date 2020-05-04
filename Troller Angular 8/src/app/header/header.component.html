@@ -1,0 +1,35 @@
+  <!-- Header -->
+  <section>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="#">Trollers</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Why Troller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+      </ul>
+      <div class="form-inline ml-auto" *ngIf="!isloggin">
+        <input class="form-control mr-sm-2" type="text" placeholder="username">
+        <input class="form-control mr-sm-2" type="text" placeholder="password">
+        <button class="btn btn-success" type="submit" (click)="onLogin()">Login</button>
+      </div>
+      
+      <div class="form-inline ml-auto" *ngIf="isloggin">
+        <div class="dropdown ml-auto" *ngIf="isloggin">
+          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" (click)="gotoMyProfile()">
+            Profile
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="./myProfile">Link 1</a>
+            <a class="dropdown-item" href="#">Link 2</a>
+          </div>
+        </div>
+        <button class="btn btn-success" type="submit" (click)="onLogout()">Logout</button>
+      </div>
+    </nav>   
